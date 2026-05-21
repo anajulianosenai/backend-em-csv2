@@ -13,18 +13,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  return res.json({
-    mensagem: 'API Estação Meteorológica',
-    descricao: 'API para consulta de leituras meteorológicas armazenadas no PostgreSQL.',
-    rotasDisponiveis: {
-      listarTodasAsLeituras: 'GET /api/leituras',
-      pesquisarLeiturasPorData: 'GET /api/leituras/data/2026-04-01',
-    },
-    formatoDaData: 'YYYY-MM-DD',
-    exemploDeUso: 'http://localhost:3000/api/leituras/data/2026-04-01',
-  });
-});
+app.get('/', (req, res) => { 
+ return res.json({ 
+ mensagem: 'API Estação Meteorológica', 
+ descricao: 'API para consulta de leituras meteorológicas armazenadas no PostgreSQL.',  rotasDisponiveis: { 
+ listarTodasAsLeituras: 'GET /api/leituras', 
+ pesquisarLeiturasPorData: 'GET /api/leituras/data/2026-04-01', 
+ importarCsv: 'npm run import:csv' 
+ },
+ formatoDaData: 'YYYY-MM-DD', 
+ exemploDeUso: 'http://localhost:3000/api/leituras/data/2026-04-01', 
+ }); 
+}); 
 
 
 app.use('/api', leiturasRoutes);
